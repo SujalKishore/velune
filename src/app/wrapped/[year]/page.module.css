@@ -1,0 +1,587 @@
+.container {
+  min-height: 100vh;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  padding: 40px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.pageBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px) brightness(0.2);
+  z-index: -1;
+  transform: scale(1.1); /* Prevent blur edges from showing */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(150px, auto);
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background: rgba(11, 17, 26, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+.card:nth-child(6) { animation-delay: 0.6s; }
+.card:nth-child(7) { animation-delay: 0.7s; }
+.card:nth-child(8) { animation-delay: 0.8s; }
+
+/* HERO CARD (Col span 2, Row span 2) */
+.heroCard {
+  grid-column: span 2;
+  grid-row: span 2;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  border-color: var(--primary-accent-20, rgba(0, 229, 197, 0.2));
+  background: rgba(11, 17, 26, 0.6);
+}
+
+.heroBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.5;
+  z-index: 0;
+  mask-image: linear-gradient(to top, transparent 10%, black 80%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+}
+
+.heroSubtitle {
+  color: var(--primary-accent);
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.heroYear {
+  font-family: 'Sora', sans-serif;
+  font-size: 96px;
+  font-weight: 800;
+  margin: -10px 0;
+  color: var(--primary-accent);
+  text-shadow: 0 0 40px var(--primary-accent-40);
+}
+
+.heroTitle {
+  font-size: 48px;
+  font-family: 'Sora', sans-serif;
+  margin-bottom: 16px;
+  background: linear-gradient(to right, #fff, rgba(255,255,255,0.7));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroDesc {
+  color: rgba(255,255,255,0.7);
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.shareBtn {
+  margin-top: 24px;
+  background: transparent;
+  border: 1px solid var(--primary-accent);
+  color: var(--primary-accent);
+  padding: 10px 20px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: fit-content;
+}
+
+.shareBtn:hover {
+  background: var(--primary-accent-10, rgba(0, 229, 197, 0.1));
+  box-shadow: 0 0 15px var(--primary-accent-30, rgba(0, 229, 197, 0.3));
+}
+
+.heroStatsRow {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.heroStat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.heroStatValue {
+  font-size: 32px;
+  font-family: 'Sora', sans-serif;
+  color: var(--primary-accent);
+  font-weight: 700;
+}
+
+.heroStatLabel {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  font-family: 'Space Grotesk', sans-serif;
+  max-width: 60px;
+}
+
+/* FAVORITE MOVIE (Col span 2) */
+.favoriteCard {
+  grid-column: span 2;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.favoriteBg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  mask-image: linear-gradient(to right, transparent, black);
+  opacity: 0.6;
+}
+
+.cardHeader {
+  color: var(--primary-accent);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  z-index: 2;
+}
+
+.favoriteTitle {
+  font-size: 32px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  z-index: 2;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  color: var(--primary-accent);
+  margin: 8px 0;
+  z-index: 2;
+}
+
+.favoriteQuote {
+  margin-top: 16px;
+  color: rgba(255,255,255,0.7);
+  font-style: italic;
+  font-size: 14px;
+  max-width: 60%;
+  z-index: 2;
+}
+
+/* YEAR IN GENRES */
+.genresCard {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.genresContent {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  height: 100%;
+  margin-top: 10px;
+}
+
+.donutWrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.donutCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.donutValue {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.donutLabel {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+}
+
+.genreLegend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.legendPercent {
+  color: var(--primary-accent);
+  font-weight: 600;
+}
+
+/* 3-COLUMN CARDS */
+.thirdCard {
+  grid-column: span 1;
+  position: relative;
+  min-height: 200px;
+}
+.largeThirdCard {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.backdropBg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4;
+  mask-image: linear-gradient(to top, black 20%, transparent);
+}
+
+/* CALENDAR CARD */
+.calendarCard {
+  grid-column: span 2;
+}
+.calendarGrid {
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-auto-flow: column;
+  gap: 4px;
+  margin-top: 16px;
+  overflow-x: hidden;
+}
+.calDay {
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+}
+
+/* MOOD CARD */
+.moodCard {
+  grid-column: span 2;
+}
+.moodsRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.moodItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.moodIcon {
+  font-size: 32px;
+}
+.moodLabel {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+}
+.moodPct {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* TOP DIRECTORS */
+.directorsCard {
+  grid-column: span 2;
+}
+.directorsRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+.directorItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.dirAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-accent-40, rgba(0, 229, 197, 0.4));
+}
+.dirName {
+  font-size: 12px;
+  text-align: center;
+}
+
+/* TOP 5 MOVIES */
+.top5Card {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.top5Row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  height: 100%;
+}
+.top5Item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+.top5Poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.footer {
+  grid-column: span 4;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* 2026 SPECIAL CARDS */
+.hallOfFameCard {
+  grid-column: span 3;
+}
+.actorCard {
+  grid-column: span 1;
+}
+.hofSections {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 16px;
+}
+.hofSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.hofHeader {
+  color: var(--primary-accent);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.hofItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hofRank {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  width: 12px;
+}
+.hofAvatarWrapper {
+  position: relative;
+}
+.hofAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.1);
+}
+.hofName {
+  font-weight: 600;
+  font-size: 14px;
+}
+.hofSub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+}
+.hofNewBadge {
+  background: rgba(139, 92, 246, 0.2);
+  color: #8B5CF6;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+/* ============================================================ */
+/* RESPONSIVE DESIGN FOR WRAPPED PAGE                           */
+/* ============================================================ */
+
+@media (max-width: 1024px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .heroCard {
+    padding: 24px;
+  }
+  .heroYear {
+    font-size: 64px;
+  }
+  .heroTitle {
+    font-size: 32px;
+  }
+  .heroStatsRow {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin-top: 24px;
+  }
+  
+  .favoriteCard {
+    flex-direction: column;
+  }
+  .favoriteBg {
+    width: 100%;
+    height: 150px;
+    mask-image: linear-gradient(to bottom, transparent, black);
+  }
+  .favoriteTitle {
+    font-size: 24px;
+  }
+  .favoriteQuote {
+    max-width: 100%;
+  }
+  
+  .genresContent {
+    flex-direction: column;
+  }
+  
+  .moodsRow, .directorsRow {
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  
+  .top5Row {
+    flex-wrap: wrap;
+  }
+  .top5Item {
+    min-width: 45%;
+  }
+  
+  .hofSections {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer {
+    grid-column: span 1;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
