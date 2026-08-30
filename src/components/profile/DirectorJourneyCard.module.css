@@ -1,0 +1,365 @@
+.card {
+  background: #0B121A;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+  width: 100%;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.cardLoading {
+  background: #0B121A;
+  border-radius: 16px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 229, 197, 0.2);
+  border-top-color: var(--primary-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* LEFT: Profile */
+.profileSection {
+  width: 160px;
+  height: 180px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.profileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.profileSection:hover .profileImg {
+  transform: scale(1.05);
+}
+
+.profileFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: var(--primary-accent);
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+}
+
+/* MIDDLE-LEFT: Stats */
+.statsSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.name {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 4px 0;
+  cursor: pointer;
+}
+
+.since {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 24px 0;
+}
+
+.sinceHighlight {
+  color: var(--primary-accent);
+  font-weight: 600;
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.donutWrapper {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.donutText {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+}
+
+.barProgressInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.barLabelWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.barCount {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.barLabel {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.progressBar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  width: 100%;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--primary-accent);
+  border-radius: 2px;
+  transition: width 1s ease-out;
+}
+
+.journeyLabel {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* SECTION COMMON */
+.sectionHeading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 16px 0;
+}
+
+/* MIDDLE-RIGHT: Recently Watched */
+.recentSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 24px;
+  border-left: 1px solid rgba(255,255,255,0.05);
+}
+
+.postersRow {
+  display: flex;
+  gap: 16px;
+}
+
+/* RIGHT: Up Next */
+.nextSection {
+  width: 120px;
+  flex-shrink: 0;
+  padding-left: 24px;
+  border-left: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* POSTER ITEM */
+.posterItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 80px;
+  cursor: pointer;
+}
+
+.posterImgWrap {
+  width: 80px;
+  height: 120px;
+  border-radius: 8px;
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.posterImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.posterItem:hover .posterImg {
+  transform: scale(1.05);
+}
+
+.posterFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  padding: 8px;
+}
+
+.checkBadge, .emptyBadge {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  background: #0B121A;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emptyBadge {
+  background: transparent;
+  bottom: 4px;
+  right: 4px;
+}
+
+.posterInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.posterTitle {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+
+.posterYear {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+/* NAV ACTION */
+.navAction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 16px;
+  cursor: pointer;
+}
+
+.navAction:hover svg {
+  color: white !important;
+}
+
+/* ============================================================ */
+/* RESPONSIVE DESIGN                                            */
+/* ============================================================ */
+
+@media (max-width: 1024px) {
+  .card {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    padding: 24px;
+  }
+  .recentSection, .nextSection {
+    border-left: none;
+    padding-left: 0;
+    align-items: center;
+    text-align: center;
+    flex: none;
+    width: 100%;
+  }
+  .postersRow {
+    justify-content: center;
+  }
+  .statsSection {
+    align-items: center;
+    text-align: center;
+    width: auto;
+  }
+  .progressRow {
+    justify-content: center;
+  }
+  .navAction {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    align-items: center;
+  }
+  .statsSection {
+    width: 100%;
+  }
+  .recentSection, .nextSection {
+    width: 100%;
+  }
+  .profileSection {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+  .profileFallback {
+    font-size: 32px;
+  }
+}

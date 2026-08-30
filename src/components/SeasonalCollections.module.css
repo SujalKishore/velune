@@ -1,0 +1,117 @@
+.container {
+  margin-bottom: 40px;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.05);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  height: 200px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.2);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px) brightness(0.6);
+  transform: scale(1.1);
+  transition: all 0.5s;
+}
+
+.card:hover .bg {
+  transform: scale(1.15);
+  filter: blur(4px) brightness(0.4);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.seasonName {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 4px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.seasonDesc {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  margin: 0 0 16px 0;
+}
+
+.posters {
+  display: flex;
+  align-items: center;
+}
+
+.poster {
+  width: 32px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 2px solid #000;
+  margin-left: -12px;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+}
+
+.poster:first-child {
+  margin-left: 0;
+}

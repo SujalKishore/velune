@@ -1,0 +1,674 @@
+.navbar {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  width: 100%;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.menuPill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 18px;
+  border-radius: 30px;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.menuPill:hover { 
+  background: rgba(255, 255, 255, 0.15); 
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.hamburger span {
+  width: 12px;
+  height: 1.5px;
+  background: white;
+}
+
+.menuDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #E94560; /* Red */
+}
+
+.navLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.navLink {
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.navLink:hover {
+  color: #E94560;
+}
+
+.navLinkActive {
+  color: #E94560;
+  font-weight: 700;
+}
+
+.navCenter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logoText {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 6px;
+  cursor: pointer;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 34px;
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.themeToggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+
+
+/* SEARCH */
+.searchWrapper {
+  position: relative;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 14px;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.searchIcon { color: rgba(255, 255, 255, 0.6); }
+
+.searchBar input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  width: 250px; /* Longer search bar as requested earlier */
+}
+.searchBar input::placeholder { color: rgba(255,255,255,0.5); }
+
+.searchClear {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.searchDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 320px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 200;
+  animation: dropdownFadeIn 0.18s ease-out;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.searchLoading {
+  padding: 16px;
+  text-align: center;
+  color: var(--text-light);
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+}
+
+.viewAllBtn {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 13px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  border-top: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.viewAllBtn:hover {
+  background: rgba(0, 229, 197, 0.05);
+  color: var(--primary-accent);
+}
+
+.searchResult {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+.searchResult:last-child { border-bottom: none; }
+.searchResult:hover { background: #f1f5f9; }
+
+.searchThumb {
+  width: 40px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.searchThumbFallback {
+  width: 40px;
+  height: 56px;
+  border-radius: 6px;
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  flex-shrink: 0;
+}
+
+.searchInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.searchTitle {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.searchMeta {
+  display: block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+.authBtnsDesktop {
+  display: flex;
+  gap: 12px;
+}
+
+.mobileAuthLinks {
+  display: none;
+}
+
+.loginBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 24px;
+  border-radius: 30px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.loginBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.signupBtn {
+  background: #E94560;
+  border: none;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 30px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.signupBtn:hover {
+  transform: scale(1.05);
+}
+
+/* PROFILE DROPDOWN */
+.authContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.bellWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.bellIcon {
+  color: white;
+  transition: opacity 0.2s;
+}
+.bellWrapper:hover .bellIcon {
+  opacity: 0.8;
+}
+
+.bellDot {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-accent);
+  border-radius: 50%;
+  border: 1.5px solid #0f172a;
+}
+
+.profileWrapper {
+  position: relative;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 20px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s;
+}
+.profile:hover { opacity: 0.8; }
+
+.profileAvatarImg {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.profileTriggerText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profileName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+}
+
+.profileRoleTrigger {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  color: var(--primary-accent);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.chevron {
+  color: rgba(255, 255, 255, 0.7);
+  transition: transform 0.2s;
+  margin-left: 4px;
+}
+.chevronOpen { transform: rotate(180deg); }
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+  background: white;
+  border-radius: 20px;
+  min-width: 340px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+  padding: 16px;
+  z-index: 100;
+  animation: dropdownFadeIn 0.2s ease-out;
+}
+
+.dropdownHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px;
+}
+
+.dropdownAvatarContainer {
+  position: relative;
+}
+
+.dropdownAvatarImgLarge {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.cameraIconBadge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 26px;
+  height: 26px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.cameraIconBadge:hover {
+  transform: scale(1.1);
+}
+
+.dropdownHeaderText {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownNameLarge {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.dropdownRoleLarge {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  color: var(--primary-accent);
+  font-weight: 600;
+}
+
+.dropdownDivider {
+  height: 1px;
+  background: #f1f5f9;
+  margin: 16px 0;
+}
+
+.statsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+.statBlock {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.statIconWrapperStar {
+  color: var(--primary-accent);
+}
+
+.statIconWrapperTrend {
+  color: var(--primary-accent);
+}
+
+.statIconStar, .statIconTrend {
+  stroke-width: 2;
+}
+
+.statTextGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.statLabel {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.statDivider {
+  width: 1px;
+  height: 36px;
+  background: #f1f5f9;
+  margin: 0 16px;
+}
+
+.dropdownSection {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 12px;
+  border: none;
+  background: transparent;
+  color: var(--text-dark);
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.dropdownItemLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dropdownItemIcon {
+  color: var(--text-light);
+  transition: color 0.2s;
+}
+
+.chevronRight {
+  color: var(--text-light);
+  transition: transform 0.2s;
+}
+
+.dropdownItem:hover {
+  background: #f8fafc;
+}
+
+.dropdownItem:hover .dropdownItemIcon {
+  color: var(--primary-accent);
+}
+.dropdownItem:hover .chevronRight {
+  transform: translateX(2px);
+}
+
+.dropdownLogout .dropdownItemLeft {
+  color: #E94560;
+}
+
+.dropdownLogoutIcon {
+  color: #E94560;
+}
+
+.dropdownLogout:hover { 
+  background: #fff1f2; 
+}
+
+/* ============================================================ */
+/* RESPONSIVE NAV GLOBALS                                       */
+/* ============================================================ */
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 16px 20px;
+  }
+  .navLinks {
+    display: none;
+  }
+  .navLinksMobileOpen {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 20px;
+    min-width: 220px;
+    background: rgba(10, 25, 49, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+  }
+}
+
+@media (max-width: 768px) {
+  .navCenter {
+    display: none; /* Hide logo on small screens to fit search & profile */
+  }
+  
+  .searchBar input {
+    width: 120px;
+  }
+
+  .navRight {
+    gap: 8px;
+  }
+
+  .authBtnsDesktop {
+    display: none;
+  }
+
+  .mobileAuthLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .profileTriggerText {
+    display: none; /* Hide text, only show avatar */
+  }
+
+  .profileWrapper {
+    padding-left: 10px;
+  }
+
+  .menuPill {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  
+  .loginBtn, .signupBtn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  
+  .searchBar {
+    padding: 6px 10px;
+  }
+  
+  .searchBar input {
+    width: 90px;
+  }
+}
