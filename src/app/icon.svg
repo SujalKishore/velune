@@ -1,0 +1,15 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with slightly rounded corners for a modern app feel -->
+  <rect width="512" height="512" rx="112" fill="#0F172A" />
+  
+  <!-- Sleek geometric 'V' shape -->
+  <path d="M 170 180 L 256 340 L 342 180" 
+        fill="none" 
+        stroke="#00E5C5" 
+        stroke-width="48" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+  
+  <!-- Abstract minimal moon/accent circle over the top right of the V -->
+  <circle cx="342" cy="150" r="28" fill="#F8FAFC" />
+</svg>
