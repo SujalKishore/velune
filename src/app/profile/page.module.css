@@ -1,0 +1,2584 @@
+.pageWrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background); /* Outside the card is dark */
+  font-family: 'Manrope', sans-serif;
+  color: var(--text-dark);
+}
+
+/* LOADING SCREEN */
+.loadingWrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #050B14;
+  gap: 24px;
+}
+
+.loadingDots {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #444; 
+  animation: pulseDot 1.5s infinite ease-in-out;
+}
+
+.dot1 { animation-delay: 0s; }
+.dot2 { animation-delay: 0.3s; }
+.dot3 { animation-delay: 0.6s; }
+
+@keyframes pulseDot {
+  0%, 100% {
+    background-color: #444;
+    box-shadow: none;
+  }
+  50% {
+    background-color: #00E5C5;
+    box-shadow: 0 0 15px #00E5C5, 0 0 30px #00E5C5;
+  }
+}
+
+.loadingText {
+  color: #888;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  letter-spacing: 8px;
+  font-weight: 500;
+}
+
+.profileContainer {
+  background-color: var(--card-bg);
+  border-radius: var(--hero-radius);
+  width: calc(100% - 30px);
+  max-width: 100%;
+  min-height: calc(100vh - 30px);
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+/* NAVBAR (Dark over hero) */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 60px;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.logoText {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 6px;
+  cursor: pointer;
+}
+
+.navLinks {
+  display: flex;
+  gap: 24px;
+}
+
+.navLink {
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.searchBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchBar input {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 30px;
+  padding: 8px 36px 8px 16px;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  width: 200px;
+  outline: none;
+}
+.searchBar input::placeholder { color: rgba(255,255,255,0.5); }
+.searchIcon {
+  position: absolute;
+  right: 12px;
+  color: rgba(255,255,255,0.5);
+}
+
+.navAvatarWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.navAvatarWrap img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* HERO SECTION */
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: var(--background);
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--background) 0%, rgba(10, 25, 49, 0.4) 50%, var(--background) 100%);
+  z-index: 1;
+}
+
+.heroContent {
+  position: absolute;
+  top: 140px;
+  left: 80px;
+  right: 80px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.userInfoBlock {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.avatarContainer {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 4px;
+}
+
+.avatarInner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 48px;
+  color: white;
+  overflow: hidden;
+}
+
+.avatarEditIcon {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.5);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s;
+}
+
+.avatarEditIcon:hover {
+  background: #222;
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.userName {
+  font-family: 'Sora', sans-serif;
+  font-size: 32px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.userMeta {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
+
+.bioContainer {
+  margin-top: 6px;
+}
+
+.userBio {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.achievementsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.achievementBadge {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.achievementBadgeMore {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.achievementBadgeMore:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border-style: solid;
+}
+
+.editProfileBtnInline {
+  margin-top: 12px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  transition: background 0.2s;
+}
+
+.editProfileBtnInline:hover {
+  background: rgba(255,255,255,0.1);
+}
+/* Right side stats card -> Cinema Year Card */
+.cinemaYearCard {
+  background: #0B111A;
+  border: 1px solid rgba(0, 229, 197, 0.4);
+  border-radius: 16px;
+  width: 420px;
+  height: 200px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 40px rgba(0, 229, 197, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 20px;
+}
+
+.cinemaYearCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 0 60px rgba(0, 229, 197, 0.1);
+  border-color: rgba(0, 229, 197, 0.8);
+}
+
+.cinemaYearContent {
+  padding: 32px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+
+.cinemaYearHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.cinemaYearTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.cinemaYearStats {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.cinemaYearDot {
+  color: rgba(255,255,255,0.3);
+  font-size: 10px;
+}
+
+.cinemaYearLink {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #00E5C5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s;
+}
+
+.cinemaYearCard:hover .cinemaYearLink {
+  gap: 10px;
+}
+
+.cinemaYearCollage {
+  position: absolute;
+  right: -20px;
+  top: -10px;
+  width: 220px;
+  height: 220px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.collagePoster {
+  position: absolute;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+  object-fit: cover;
+}
+
+.poster1 {
+  width: 80px;
+  height: 120px;
+  top: 40px;
+  left: 20px;
+  transform: rotate(-10deg);
+  z-index: 2;
+}
+
+.poster2 {
+  width: 70px;
+  height: 100px;
+  top: 20px;
+  left: 100px;
+  transform: rotate(5deg);
+  z-index: 1;
+}
+
+.poster3 {
+  width: 85px;
+  height: 125px;
+  top: 80px;
+  left: 130px;
+  transform: rotate(-5deg);
+  z-index: 3;
+}
+
+.poster4 {
+  width: 90px;
+  height: 135px;
+  top: 100px;
+  left: 50px;
+  transform: rotate(8deg);
+  z-index: 4;
+}
+
+.decoStar1 {
+  position: absolute;
+  top: 60px;
+  left: 190px;
+  opacity: 0.8;
+}
+
+.decoStar2 {
+  position: absolute;
+  top: 30px;
+  right: 60px;
+  opacity: 0.5;
+}
+
+.wrappedBtnInline {
+  background: linear-gradient(135deg, #E94560, #4A7FA7);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(233, 69, 96, 0.3);
+}
+
+.wrappedBtnInline:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(233, 69, 96, 0.5);
+}
+
+/* Right side stats card */
+.statsCard {
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 24px 32px 16px 32px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.statsCardInner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.statsCols {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.statCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.statCol h3 {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  color: white;
+  font-weight: 700;
+}
+
+.statCol p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+}
+
+.statDivider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.2);
+}
+
+.statChartSvg {
+  width: 100%;
+  height: 40px;
+  margin-top: 8px;
+}
+
+.followLine {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.curveWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 5;
+}
+.curveSvg { width: 100%; height: 100%; display: block; }
+
+
+/* BODY SECTION */
+.bodySection {
+  padding: 20px 80px 80px 80px;
+  background-color: var(--card-bg);
+  position: relative;
+  z-index: 10;
+  margin-top: -1px;
+}
+
+/* STATS ROW */
+.statsRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  gap: 16px;
+}
+
+.statBox {
+  flex: 1;
+  background: white;
+  border-radius: 16px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.statBox:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+}
+
+.statIconWrap {
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 229, 197, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.statIcon { color: #00E5C5; }
+
+.statLabel {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.statNumber {
+  font-family: 'Sora', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+.statSub {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  color: #94A3B8;
+  font-weight: 500;
+}
+.starDisplay {
+  font-size: 12px;
+  color: #00E5C5;
+  letter-spacing: 2px;
+}
+
+/* TABS ROW */
+.tabsRow {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid #E2E8F0;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.tab {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+  padding-bottom: 16px;
+  cursor: pointer;
+  position: relative;
+}
+
+.tabActive {
+  color: #00E5C5;
+}
+.tabActive::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #00E5C5;
+}
+
+/* ================================================================
+   TIMELINE HISTORY UI
+   ================================================================ */
+
+.timelineWrapper {
+  margin-top: 32px;
+  position: relative;
+  padding-bottom: 60px;
+}
+
+.timelineGroup {
+  position: relative;
+  padding-left: 36px;
+  margin-bottom: 48px;
+}
+
+.timelineTrack {
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: -48px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 0;
+}
+
+/* Hide track for last group */
+.timelineGroup:last-child .timelineTrack {
+  display: none;
+}
+
+.timelineMarker {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #0B192C;
+  border: 2px solid #00E5C5;
+  z-index: 1;
+}
+
+.timelineHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.timelineDateCol {
+  width: 140px;
+  flex-shrink: 0;
+}
+
+.timelineDate {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0d9488;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+.timelineDay {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.timelineStats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: #475569;
+  font-weight: 500;
+  flex: 1;
+}
+
+.timelineStats strong {
+  color: #0f172a;
+}
+
+.timelineDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.timelineTopMovie {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.timelineTopMovieLabel {
+  font-size: 10px;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.timelineTopMovieValue {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.timelineTopMovieImg {
+  width: 24px;
+  height: 36px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.timelineCardsRow {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 16px;
+  padding-bottom: 32px;
+}
+
+.timelineCard {
+  flex: 0 0 260px;
+  background: #111827;
+  border-radius: 12px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  height: 110px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.timelineCard:hover {
+  transform: translateY(-2px);
+}
+
+.timelineCardPoster {
+  width: 80px;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.timelineCardContent {
+  flex: 1;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.timelineCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.timelineCardTime {
+  font-size: 10px;
+  color: #a0aec0;
+  font-weight: 600;
+}
+
+.timelineCardMenu {
+  color: #a0aec0;
+  cursor: pointer;
+}
+
+.timelineCardTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f7fafc;
+  margin: 0 0 4px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.timelineCardStars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.timelineCardBottom {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timelineCardTags {
+  display: flex;
+  gap: 6px;
+}
+
+.timelineTag {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.timelineCardHeart {
+  color: #718096;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.timelineCardHeart:hover {
+  color: #e53e3e;
+}
+
+
+
+/* Pagination */
+.paginationControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.pageBtn {
+  background: transparent;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  color: var(--text-dark);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pageBtn:hover:not(:disabled) {
+  background: rgba(128, 128, 128, 0.1);
+}
+
+.pageBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pageInfo {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.pageNumberBtn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-dark);
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.pageNumberBtn:hover:not(:disabled) {
+  background: rgba(128, 128, 128, 0.1);
+}
+
+.pageNumberBtn.activePage {
+  background: rgba(0, 229, 197, 0.1);
+  border-color: rgba(0, 229, 197, 0.3);
+  color: var(--primary-accent);
+}
+
+.pageNumberBtn.dots {
+  cursor: default;
+  color: var(--text-dark);
+  opacity: 0.5;
+}
+
+
+/* MAIN GRID */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 40px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.sectionTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 2px;
+}
+.filterDropdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dark);
+  border: 1px solid #E2E8F0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* ACTIVITY GRID */
+.activityGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.activityCard {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  height: 280px;
+  position: relative;
+}
+
+.activityImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activityOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10,25,49,0.8) 0%, rgba(10,25,49,0.4) 40%, rgba(10,25,49,0.9) 100%);
+}
+
+.activityContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.activityTop {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activityDate {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  color: rgba(255,255,255,0.7);
+}
+
+.actionTag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  color: white;
+  background: rgba(255,255,255,0.2);
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.activityStars {
+  display: flex;
+  gap: 2px;
+}
+
+.activityBottom {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.activityMovieTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.activityReview {
+  font-family: 'Sora', sans-serif;
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.4;
+}
+
+/* QUOTE BLOCK */
+.bottomQuoteBlock {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  gap: 30px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+}
+
+.quoteBlockInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quoteBlockHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+}
+.quoteDate { color: #94A3B8; }
+.quoteAction { color: #00E5C5; display: flex; align-items: center; gap: 4px; }
+
+.quoteMovie {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+.quoteStars { color: #00E5C5; font-size: 12px; }
+
+.quoteBlockContent {
+  flex: 2;
+  display: flex;
+  gap: 12px;
+}
+.quoteBlockMark {
+  color: #00E5C5;
+  font-size: 32px;
+  font-family: 'Sora', sans-serif;
+  line-height: 1;
+}
+.quoteBlockContent p {
+  font-family: 'Sora', sans-serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+.footerQuote {
+  width: 100%;
+  height: 120px;
+  background-image: url('/cinematic_login_hero.png');
+  background-size: cover;
+  background-position: bottom;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  gap: 16px;
+}
+
+.footerQuoteMark {
+  color: #00E5C5;
+  font-size: 48px;
+  font-family: 'Sora', sans-serif;
+  line-height: 1;
+}
+.footerQuote p {
+  font-family: 'Sora', sans-serif;
+  font-style: italic;
+  font-size: 16px;
+  color: rgba(255,255,255,0.9);
+}
+
+/* SIDEBAR RIGHT COLUMN */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* DARK PROGRESS CARD */
+.progressCard {
+  background: var(--background);
+  border-radius: 12px;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.sidebarTitleDark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.6);
+  align-self: flex-start;
+  margin-bottom: 24px;
+}
+
+.sidebarTitleLight {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-dark);
+}
+
+.circularProgress {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+}
+.circularProgress svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.circularValue {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.progressTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.progressDesc {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  margin-bottom: 30px;
+}
+.progressHighlight { color: #00E5C5; font-weight: 600; }
+
+.milestones {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+}
+
+.milestoneTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.4);
+}
+
+.milestoneItem {
+  display: flex;
+  gap: 12px;
+}
+
+.milestoneBarWrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.milestoneHeader {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  color: rgba(255,255,255,0.8);
+}
+
+.milestoneBar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.milestoneFill {
+  height: 100%;
+  background: #00E5C5;
+  border-radius: 2px;
+}
+
+
+/* MONTH STATS */
+.monthCard {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.monthGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.monthStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+.monthStat h3 {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-top: 4px;
+}
+.monthStat p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  color: var(--text-light);
+}
+
+/* TASTE BARS */
+.tasteCard {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.tasteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.viewAllBtn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: #00E5C5;
+  cursor: pointer;
+}
+
+.tasteList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tasteRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tasteLabel {
+  width: 50px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.tasteBarWrap {
+  flex: 1;
+  height: 4px;
+  background: #E2E8F0;
+  border-radius: 2px;
+}
+
+.tasteBar {
+  height: 100%;
+  background: #00E5C5;
+  border-radius: 2px;
+}
+
+.tastePct {
+  width: 30px;
+  text-align: right;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  color: var(--text-light);
+}
+
+.progressTabGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.tvProgressCard {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.tvProgressCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.tvProgressImg {
+  width: 70px;
+  height: 105px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.tvProgressInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tvProgressTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.tvProgressBarWrap {
+  width: 100%;
+  height: 6px;
+  background: #E2E8F0;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.tvProgressBar {
+  height: 100%;
+  background: #00E5C5;
+  border-radius: 3px;
+  transition: width 0.5s ease-out;
+}
+
+.tvProgressLabel {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+/* MODAL */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: #111A24;
+  padding: 40px;
+  border-radius: 20px;
+  width: 500px;
+  max-width: 90vw;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  color: white;
+  font-family: 'Manrope', sans-serif;
+}
+
+.modalTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+}
+
+.formInput, .formTextarea {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 12px;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  outline: none;
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.formInput:focus, .formTextarea:focus {
+  border-color: #00E5C5;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.btnCancel {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btnSave {
+  background: #00E5C5;
+  color: #050B14;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.editProfileBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.editProfileBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.userBio {
+  margin-top: 12px;
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+/* LISTS UI */
+.listsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.createListCard {
+  border: 2px dashed rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+  background: white;
+  transition: all 0.2s;
+}
+
+.createListCard:hover {
+  border-color: #00E5C5;
+  color: #00E5C5;
+  background: rgba(0, 229, 197, 0.05);
+}
+
+.listCard {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.listCard:hover {
+  transform: translateY(-4px);
+}
+
+.listTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1A1A1A;
+}
+
+.listDesc {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.listMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.listPosters {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.listPosterMini {
+  width: 40px;
+  height: 60px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 2px solid #1A2332;
+  margin-left: -10px;
+}
+.listPosterMini:first-child {
+  margin-left: 0;
+}
+
+/* ADD TO LIST MODAL */
+.addToListBtn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.selectList {
+  width: 100%;
+  padding: 12px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* MOVIE DNA STYLES */
+.dnaContainer {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.dnaVisualization {
+  background: #111A24;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.orbitMapSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.dnaThemes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dnaThemesTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-light);
+}
+
+.dnaThemesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dnaThemePill {
+  background: rgba(0, 229, 197, 0.1);
+  color: #00E5C5;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ACHIEVEMENTS */
+.achievementsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.achievementBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: 20px;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+  cursor: default;
+  transition: all 0.2s;
+}
+
+.achievementBadge:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #00E5C5;
+}
+
+@keyframes spinIn {
+  0% { transform: scale(0.5) rotate(-90deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* ================================================================
+   WATCHLIST REDESIGN
+   ================================================================ */
+.watchlistContainer {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.watchlistHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.watchlistHeaderLeft {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.watchlistHeaderIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: #E8F5F3;
+  color: #00E5C5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.watchlistHeaderTitles h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.watchlistHeaderTitles p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  color: #666;
+}
+
+.watchlistControls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.watchlistSearch {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.watchlistSearch input {
+  background: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 10px 14px 10px 36px;
+  font-size: 13px;
+  font-family: 'Manrope', sans-serif;
+  color: #333;
+  width: 200px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.watchlistSearch input:focus {
+  border-color: #00E5C5;
+}
+
+.watchlistSearchIcon {
+  position: absolute;
+  left: 12px;
+  color: #94A3B8;
+}
+
+.watchlistFilterBtn, .watchlistSortBtn {
+  background: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.watchlistFilterBtn:hover, .watchlistSortBtn:hover {
+  background: #F8FAFC;
+}
+
+.watchlistGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.watchlistCard {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #F1F5F9;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.watchlistCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.watchlistCardImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.watchlistCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.watchlistCardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 40%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none;
+}
+
+.watchlistCardPill {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: white;
+  color: #0d9488;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  z-index: 2;
+}
+
+.watchlistCardMenu {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: white;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.watchlistCardContent {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.watchlistCardTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.watchlistCardSubtitle {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  color: #64748B;
+  margin-bottom: 12px;
+}
+
+.watchlistCardBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.watchlistCardRating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0d9488;
+}
+
+.watchlistCardBookmark {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748B;
+  transition: all 0.2s;
+}
+
+.watchlistCardBookmark:hover {
+  background: #F8FAFC;
+  color: #111;
+}
+
+.watchlistFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.watchlistHeaderTitles p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  color: #666;
+}
+
+.watchlistControls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.watchlistSearch {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.watchlistSearch input {
+  background: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 10px 14px 10px 36px;
+  font-size: 13px;
+  font-family: 'Manrope', sans-serif;
+  color: #333;
+  width: 200px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.watchlistSearch input:focus {
+  border-color: #00E5C5;
+}
+
+.watchlistSearchIcon {
+  position: absolute;
+  left: 12px;
+  color: #94A3B8;
+}
+
+.watchlistFilterBtn, .watchlistSortBtn {
+  background: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.watchlistFilterBtn:hover, .watchlistSortBtn:hover {
+  background: #F8FAFC;
+}
+
+.watchlistGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.watchlistCard {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #F1F5F9;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.watchlistCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.watchlistCardImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.watchlistCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.watchlistCardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 40%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none;
+}
+
+.watchlistCardPill {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: white;
+  color: #0d9488;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  z-index: 2;
+}
+
+.watchlistCardMenu {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: white;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.watchlistCardContent {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.watchlistCardTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.watchlistCardSubtitle {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  color: #64748B;
+  margin-bottom: 12px;
+}
+
+.watchlistCardBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.watchlistCardRating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0d9488;
+}
+
+.watchlistCardBookmark {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748B;
+  transition: all 0.2s;
+}
+
+.watchlistCardBookmark:hover {
+  background: #F8FAFC;
+  color: #111;
+}
+
+.watchlistFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #F1F5F9;
+}
+
+.watchlistFooterIcon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 12px;
+  color: #94A3B8;
+}
+
+.watchlistFooterTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.watchlistFooterDesc {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  color: #94A3B8;
+}
+
+/* Responsive adjustments for Grid */
+@media (max-width: 1400px) {
+  .watchlistGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 1100px) {
+  .watchlistGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 800px) {
+  .watchlistGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .watchlistGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Distinct styling for Collection Cards */
+.watchlistCardCollection {
+  background: linear-gradient(145deg, #1A1A2E 0%, #16213E 100%);
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.15);
+}
+
+.watchlistCardCollection .watchlistCardTitle {
+  color: #fff;
+}
+
+.watchlistCardCollection .watchlistCardSubtitle {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.watchlistCardCollection .watchlistCardPill {
+  background: rgba(138, 43, 226, 0.2);
+  color: #DDA0DD;
+  border: 1px solid rgba(138, 43, 226, 0.5);
+}
+
+.watchlistCardCollection .watchlistCardBookmark {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.watchlistCardCollection .watchlistCardBookmark:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.watchlistCardCollection .watchlistCardOverlay {
+  background: linear-gradient(to bottom, rgba(138,43,226,0.3) 0%, transparent 40%, rgba(26,26,46,0.9) 100%);
+}
+
+/* REVIEWS TAB STYLES */
+.reviewsTimelineWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: 100px; /* Space for the timeline on the left */
+  margin-top: 24px;
+}
+
+.reviewsTimelineTrack {
+  position: absolute;
+  left: 50px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 0;
+}
+
+.reviewGroup {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.reviewGroupDate {
+  position: absolute;
+  left: -100px;
+  top: 0;
+  width: 80px;
+  text-align: right;
+}
+
+.reviewTimeAgo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.reviewExactDate {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 4px;
+}
+
+.reviewDot {
+  position: absolute;
+  left: -54px; /* 50px track - 4px radius */
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00E5C5;
+  z-index: 1;
+}
+
+.reviewCardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.reviewCardFull {
+  display: flex;
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  gap: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  color: #111;
+}
+
+.reviewCardPoster {
+  width: 120px;
+  height: 180px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.reviewCardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.reviewUserInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.reviewAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #111;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.reviewUserName {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+}
+
+.reviewDateStr {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  color: #666;
+}
+
+.reviewCardStars {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.reviewTextFull {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 24px;
+}
+
+.reviewCardFooter {
+  margin-top: auto;
+  display: flex;
+}
+
+.reviewWatchedPill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(0, 229, 197, 0.1);
+  color: #00A68F;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* TWO-COLUMN LAYOUT */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ============================================================ */
+/* RESPONSIVE PROFILE PAGE                                      */
+/* ============================================================ */
+@media (max-width: 1024px) {
+  .heroContent {
+    left: 40px;
+    right: 40px;
+    top: 120px;
+  }
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .profileContainer {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+  .heroSection {
+    height: auto;
+    min-height: auto;
+  }
+  .heroContent {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 20px 40px 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .userInfoBlock {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+  .avatarContainer {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+  }
+  .userDetails {
+    align-items: center;
+  }
+  .bioContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .achievementsContainer {
+    justify-content: center;
+  }
+  .editProfileBtnInline {
+    align-self: center;
+  }
+  .cinemaYearCard {
+    width: 100%;
+    height: auto;
+  }
+  .cinemaYearCollage {
+    display: none;
+  }
+  
+  .bodySection {
+    padding: 20px 20px 40px 20px;
+    margin-top: -1px;
+  }
+  .statsRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .tabsRow {
+    gap: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 10px;
+  }
+  .mainGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}

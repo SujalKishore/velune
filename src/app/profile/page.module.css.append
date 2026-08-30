@@ -1,0 +1,217 @@
+
+/* MODAL */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: #111A24;
+  padding: 40px;
+  border-radius: 20px;
+  width: 500px;
+  max-width: 90vw;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  color: white;
+  font-family: 'Manrope', sans-serif;
+}
+
+.modalTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+}
+
+.formInput, .formTextarea {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 12px;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  outline: none;
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.formInput:focus, .formTextarea:focus {
+  border-color: #00E5C5;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.btnCancel {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btnSave {
+  background: #00E5C5;
+  color: #050B14;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.editProfileBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.editProfileBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.userBio {
+  margin-top: 12px;
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+/* LISTS UI */
+.listsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.createListCard {
+  border: 2px dashed rgba(255,255,255,0.2);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.6);
+  transition: all 0.2s;
+}
+
+.createListCard:hover {
+  border-color: #00E5C5;
+  color: #00E5C5;
+  background: rgba(0, 229, 197, 0.05);
+}
+
+.listCard {
+  background: #1A2332;
+  border-radius: 16px;
+  padding: 24px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.listCard:hover {
+  transform: translateY(-4px);
+}
+
+.listTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.listDesc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.listMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+
+.listPosters {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.listPosterMini {
+  width: 40px;
+  height: 60px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 2px solid #1A2332;
+  margin-left: -10px;
+}
+.listPosterMini:first-child {
+  margin-left: 0;
+}
+
+/* ADD TO LIST MODAL (used in movies/tv pages eventually) */
+.addToListBtn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.selectList {
+  width: 100%;
+  padding: 12px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}

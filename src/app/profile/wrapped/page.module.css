@@ -1,0 +1,199 @@
+.wrappedContainer {
+  background: #050B14;
+  min-height: 100vh;
+  font-family: 'Sora', sans-serif;
+  color: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.closeBtn {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background 0.2s, transform 0.2s;
+  backdrop-filter: blur(10px);
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bgGradient1 { background: linear-gradient(135deg, #1A1A2E, #16213E, #0F3460); }
+.bgGradient2 { background: linear-gradient(135deg, #050B14, var(--primary-accent), #111A24); }
+.bgGradient3 { background: linear-gradient(135deg, #E94560, #4A7FA7); }
+.bgGradient4 { background: linear-gradient(135deg, #FF6B6B, #556270); }
+.bgGradient5 { background: linear-gradient(135deg, #2C3E50, #3498DB); }
+.bgImage { background: #050B14; }
+
+.sectionImageBg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  opacity: 0.5;
+  filter: blur(5px);
+  transform: scale(1.05);
+}
+
+.sectionOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(5,11,20,0.5) 0%, rgba(5,11,20,0.9) 100%);
+  z-index: 2;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contentWrapper.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.statValue {
+  font-size: clamp(80px, 10vw, 150px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  background: linear-gradient(to bottom, #FFFFFF, #AAAAAA);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.statValueSmall {
+  font-size: clamp(40px, 6vw, 80px);
+}
+
+.statLabel {
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: var(--primary-accent);
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+  color: rgba(255,255,255,0.5);
+  z-index: 100;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+  40% { transform: translateY(-20px) translateX(-50%); }
+  60% { transform: translateY(-10px) translateX(-50%); }
+}
+
+.shareSection {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.shareBtn {
+  background: white;
+  color: black;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 40px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+}
+
+.shareBtn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(255,255,255,0.3);
+}
+
+.gridStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.gridStatCard {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+}
+
+.gridStatValue {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--primary-accent);
+  margin-bottom: 10px;
+}
+
+.gridStatLabel {
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
