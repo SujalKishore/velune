@@ -1,34 +1,96 @@
+/* src/app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0A1931;
+  --card-bg: #F6FAFD;
+  --text-dark: #0A1931;
+  --text-light: #4A7FA7;
+  --accent: #1A3D63;
+  --pill-bg: #B3CFE5;
+  --pill-hover: #F6FAFD;
+  --hero-radius: 30px;
+  --card-radius: 20px;
+  --primary-accent: #00E5C5;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body[data-radius="sharp"] {
+  --hero-radius: 0px;
+  --card-radius: 0px;
+}
+body[data-radius="rounded"] {
+  --hero-radius: 30px;
+  --card-radius: 20px;
+}
+body[data-radius="pill"] {
+  --hero-radius: 60px;
+  --card-radius: 40px;
 }
 
-html {
-  height: 100%;
+body[data-density="compact"] {
+  --spacing-multiplier: 0.7;
+}
+body[data-density="default"] {
+  --spacing-multiplier: 1;
+}
+body[data-density="spacious"] {
+  --spacing-multiplier: 1.5;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+body[data-card-style="glass"] {
+  --card-bg-opacity: 0.8;
+  --card-border: 1px solid rgba(255,255,255,0.1);
+  --card-backdrop: blur(10px);
+}
+body[data-card-style="solid"] {
+  --card-bg-opacity: 1;
+  --card-border: none;
+  --card-backdrop: none;
+}
+body[data-card-style="bordered"] {
+  --card-bg-opacity: 0.1;
+  --card-border: 1px solid var(--primary-accent);
+  --card-backdrop: none;
 }
 
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body[data-accent="blue"] {
+  --primary-accent: #00A3FF;
+}
+body[data-accent="pink"] {
+  --primary-accent: #FF3366;
+}
+body[data-accent="purple"] {
+  --primary-accent: #7B61FF;
+}
+body[data-accent="teal"] {
+  --primary-accent: #00E5C5;
+}
+body[data-accent="orange"] {
+  --primary-accent: #FF7B00;
+}
+body[data-accent="red"] {
+  --primary-accent: #FF2222;
+}
+body[data-accent="green"] {
+  --primary-accent: #00CC44;
+}
+body[data-accent="yellow"] {
+  --primary-accent: #FFD500;
+}
+
+body[data-font-size="small"] {
+  font-size: 14px;
+}
+body[data-font-size="medium"] {
+  font-size: 16px;
+}
+body[data-font-size="large"] {
+  font-size: 18px;
+}
+
+body.reduced-motion * {
+  animation: none !important;
+  transition: none !important;
 }
 
 * {
@@ -37,13 +99,484 @@ body {
   margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+body {
+  background-color: var(--background);
+  color: var(--text-dark);
+  font-family: 'Manrope', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  color: var(--primary-accent);
+}
+
+nav, button, input, .menuPill, .searchBar, .sideNum, .catName, .moreBtn, .discoverBtn, .profile, .floatText, .badgeText, .categoryTag {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+}
+
+.appHeader {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: var(--primary-accent);
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 12px;
+  z-index: 10;
+}
+
+/* ============================================================ */
+/* NEW APPEARANCE SETTINGS OVERRIDES (from SettingsContext)     */
+/* ============================================================ */
+
+/* 1. Theme Variables ([data-theme]) */
+body[data-theme="dark"] {
+  --background: #0B0F19;
+  --card-bg: #1A2235;
+  --text-dark: #F8FAFC;
+  --text-light: #94A3B8;
+  --accent: #2A3650;
+  --pill-bg: #1E293B;
+  --pill-hover: #334155;
+}
+body[data-theme="oled"] {
+  --background: #000000;
+  --card-bg: #090909;
+  --text-dark: #FFFFFF;
+  --text-light: #888888;
+  --accent: #111111;
+  --pill-bg: #222222;
+  --pill-hover: #333333;
+  /* Disable box-shadows in OLED to maintain pure blacks */
+  * { box-shadow: none !important; }
+}
+
+body[data-theme="fifa"] {
+  --background: #0f1c16;
+  --card-bg: #162f22; 
+  --text-dark: #FFFFFF;
+  --text-light: #FFD700;
+  --accent: #FF2222;
+  --pill-bg: #1f4734;
+  --pill-hover: #296046;
+  --primary-accent: #FFD700;
+}
+
+body[data-theme="fifa"]::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(circle at 15% 50%, rgba(255, 34, 34, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(0, 229, 197, 0.15) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body[data-theme="fifa"] .pageWrapper, 
+body[data-theme="fifa"] main, 
+body[data-theme="fifa"] nav {
+  position: relative;
+  z-index: 1;
+}
+
+body[data-theme="fifa"] .card {
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.05);
+}
+
+body[data-theme="fifa"] button, 
+body[data-theme="fifa"] .pill {
+  border: 1px solid rgba(255, 215, 0, 0.3) !important;
+}
+
+/* 2. Typography ([data-font]) */
+body[data-font="space-grotesk"],
+body[data-font="space-grotesk"] * {
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+body[data-font="inter"],
+body[data-font="inter"] * {
+  font-family: 'Inter', sans-serif !important;
+}
+body[data-font="roboto"],
+body[data-font="roboto"] * {
+  font-family: 'Roboto', sans-serif !important;
+}
+body[data-font="system"],
+body[data-font="system"] * {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+body[data-font="playfair"],
+body[data-font="playfair"] * {
+  font-family: 'Playfair Display', serif !important;
+}
+body[data-font="poppins"],
+body[data-font="poppins"] * {
+  font-family: 'Poppins', sans-serif !important;
+}
+body[data-font="fira-code"],
+body[data-font="fira-code"] * {
+  font-family: 'Fira Code', monospace !important;
+}
+
+/* 3. Glassmorphism Toggle (body.enable-blur) */
+/* If the class is missing, we strictly strip all backdrop filters */
+body:not(.enable-blur) * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* 4. Animation Speed ([data-animation-speed]) */
+/* Default transitions are ~0.3s in most modules, so we aggressively override */
+body[data-animation-speed="fast"] * {
+  transition-duration: 0.15s !important;
+}
+body[data-animation-speed="slow"] * {
+  transition-duration: 0.6s !important;
+}
+body[data-animation-speed="off"] * {
+  transition-duration: 0s !important;
+  animation-duration: 0s !important;
+}
+
+/* 5. High Contrast (.high-contrast) */
+body.high-contrast {
+  /* Aggressively saturate and increase contrast */
+  filter: contrast(130%) saturate(120%) !important;
+  --text-light: #000000 !important;
+  --text-dark: #FFFFFF !important;
+}
+body[data-theme="light"].high-contrast {
+  --text-light: #000000 !important;
+  --text-dark: #000000 !important;
+}
+
+/* 6. Custom Cursor is now injected via SettingsContext based on accent color */
+
+/* 7. Scrollbar Styles ([data-scrollbar]) */
+body[data-scrollbar="hidden"]::-webkit-scrollbar,
+body[data-scrollbar="hidden"] *::-webkit-scrollbar {
+  display: none !important;
+}
+body[data-scrollbar="minimal"]::-webkit-scrollbar,
+body[data-scrollbar="minimal"] *::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+body[data-scrollbar="minimal"]::-webkit-scrollbar-track,
+body[data-scrollbar="minimal"] *::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+body[data-scrollbar="minimal"]::-webkit-scrollbar-thumb,
+body[data-scrollbar="minimal"] *::-webkit-scrollbar-thumb {
+  background: var(--primary-accent) !important;
+  border-radius: 10px !important;
+}
+
+/* 8. Poster Styles ([data-poster]) */
+body[data-poster="rounded"] img {
+  border-radius: 20px !important;
+}
+body[data-poster="rounded"] div[style*="background-image"] {
+  border-radius: 20px !important;
+}
+
+body[data-poster="cinematic"] img,
+body[data-poster="cinematic"] div[style*="background-image"] {
+  /* Force a cinematic 16:9 aspect ratio */
+  aspect-ratio: 16/9 !important;
+  object-fit: cover !important;
+}
+
+/* 9. Navigation Layout Hacks ([data-nav]) */
+/* Since changing structural layouts (sidebar vs topbar) requires React changes, 
+   we simulate it via CSS transforms where possible, or just apply a visual indicator. */
+body[data-nav="minimal"] nav,
+body[data-nav="minimal"] header,
+body[data-nav="minimal"] .navbar {
+  /* Example minimal hack: scale down and center */
+  transform: scale(0.9);
+  opacity: 0.9;
+  border-radius: 40px !important;
+  margin: 10px auto !important;
+  max-width: 90%;
+}
+
+/* ============================================================ */
+/* NEW COOL CUSTOMIZATIONS & EXISTING FIXES                     */
+/* ============================================================ */
+
+/* -- FIXED CUSTOMIZATIONS -- */
+
+/* Button Styles ([data-button-style]) */
+body[data-button-style="outline"] button,
+body[data-button-style="outline"] .loginBtn,
+body[data-button-style="outline"] .signupBtn {
+  background: transparent !important;
+  border: 1px solid var(--primary-accent) !important;
+  color: var(--primary-accent) !important;
+}
+
+body[data-button-style="ghost"] button,
+body[data-button-style="ghost"] .loginBtn,
+body[data-button-style="ghost"] .signupBtn {
+  background: transparent !important;
+  border: none !important;
+  color: var(--primary-accent) !important;
+}
+
+body[data-button-style="glass"] button,
+body[data-button-style="glass"] .loginBtn,
+body[data-button-style="glass"] .signupBtn {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: var(--text-dark) !important;
+}
+
+/* Image Hover Effects ([data-image-hover]) */
+body[data-image-hover="zoom"] img:not([class*="container"]):hover,
+body[data-image-hover="zoom"] div[style*="background-image"]:not([class*="container"]):not([class*="heroBg"]):not([class*="backdropBg"]):not([class*="favoriteBg"]):hover {
+  transform: scale(1.05) !important;
+  transition: transform 0.3s ease !important;
+}
+
+body[data-image-hover="glow"] img:hover,
+body[data-image-hover="glow"] div[style*="background-image"]:hover {
+  box-shadow: 0 0 20px var(--primary-accent) !important;
+  transition: box-shadow 0.3s ease !important;
+}
+
+body[data-image-hover="grayscale"] img,
+body[data-image-hover="grayscale"] div[style*="background-image"] {
+  filter: grayscale(100%) !important;
+  transition: filter 0.3s ease !important;
+}
+body[data-image-hover="grayscale"] img:hover,
+body[data-image-hover="grayscale"] div[style*="background-image"]:hover {
+  filter: grayscale(0%) !important;
+}
+
+/* Page Transitions ([data-page-transition]) */
+@keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUpPage { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes zoomInPage { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+body[data-page-transition="fade"] main,
+body[data-page-transition="fade"] .pageWrapper {
+  animation: fadeInPage 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+body[data-page-transition="slide"] main,
+body[data-page-transition="slide"] .pageWrapper {
+  animation: slideUpPage 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+body[data-page-transition="zoom"] main,
+body[data-page-transition="zoom"] .pageWrapper {
+  animation: zoomInPage 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* -- 10 NEW UNIQUE EFFECTS -- */
+
+/* 1. VHS Retro Scanlines */
+body.effect-scanlines::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* 2. Filmic Noise Overlay */
+body.effect-noise::before {
+  content: "";
+  position: fixed;
+  top: -50%; left: -50%; right: -50%; bottom: -50%;
+  width: 200%; height: 200%;
+  background: transparent url('https://upload.wikimedia.org/wikipedia/commons/0/03/White_Noise_Film_Grain.gif') repeat 0 0;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 9997;
+}
+
+/* 3. Neon Outlines / Cyberpunk Mode */
+/* body.effect-neon * { Subtle glow text for headings } */
+body.effect-neon h1, body.effect-neon h2, body.effect-neon h3 {
+  text-shadow: 0 0 10px var(--primary-accent), 0 0 20px var(--primary-accent);
+}
+body.effect-neon .card, body.effect-neon .pill, body.effect-neon button {
+  border: 1px solid var(--primary-accent) !important;
+  box-shadow: 0 0 15px var(--primary-accent), inset 0 0 10px var(--primary-accent) !important;
+}
+
+/* 4. Holographic Accents */
+@keyframes holoGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+body.effect-holographic button, body.effect-holographic .pill, body.effect-holographic .badgeText {
+  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3) !important;
+  background-size: 1800% 1800% !important;
+  animation: holoGradient 6s ease infinite !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* 5. 3D Tilt Cards (Pure CSS perspective on hover) */
+body.effect-tilt img:hover,
+body.effect-tilt div[style*="background-image"]:hover {
+  transform: perspective(1000px) rotateX(8deg) rotateY(-8deg) scale(1.05) !important;
+  box-shadow: -15px 15px 25px rgba(0,0,0,0.5) !important;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease !important;
+  z-index: 10;
+}
+
+/* 6. Glitch Text Effects */
+body.effect-glitch h1:hover, body.effect-glitch h2:hover, body.effect-glitch .logoText:hover {
+  text-shadow: 2px 0 red, -2px 0 blue;
+  animation: glitch-anim 0.2s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px) }
+  40% { transform: translate(-2px, -2px) }
+  60% { transform: translate(2px, 2px) }
+  80% { transform: translate(2px, -2px) }
+  100% { transform: translate(0) }
+}
+
+/* 7. Noir / Monochrome Mode */
+body.effect-noir {
+  filter: grayscale(100%) contrast(110%) brightness(0.9) !important;
+}
+
+/* 8. Glass Reflection */
+body.effect-reflection img {
+  position: relative;
+  overflow: hidden;
+}
+/* We use a pseudo-element on the parent or hover state brightness hack */
+body.effect-reflection a:hover > img, 
+body.effect-reflection div:hover > img {
+  filter: brightness(1.3) contrast(1.1);
+  transition: filter 0.4s ease;
+}
+/* For actual sweeping reflection on buttons/cards */
+@keyframes sweepReflect {
+  0% { left: -100%; }
+  50% { left: 200%; }
+  100% { left: 200%; }
+}
+body.effect-reflection button {
+  position: relative;
+  overflow: hidden;
+}
+body.effect-reflection button::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  animation: sweepReflect 3s infinite;
+  pointer-events: none;
+}
+
+/* 9. Focus Dimmer */
+/* Uses the CSS :has selector to dim everything else when an interactive element is hovered */
+body.effect-dimmer:has(a:hover) a:not(:hover),
+body.effect-dimmer:has(button:hover) button:not(:hover),
+body.effect-dimmer:has(.card:hover) .card:not(:hover) {
+  opacity: 0.4;
+  filter: grayscale(60%);
+  transition: all 0.3s ease;
+}
+body.effect-dimmer a, body.effect-dimmer button, body.effect-dimmer .card {
+  transition: all 0.3s ease;
+}
+
+/* 10. Stealth Mode (Privacy) */
+body.stealth-mode img,
+body.stealth-mode .card,
+body.stealth-mode [class*="poster"] {
+  filter: blur(15px) grayscale(100%);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+body.stealth-mode h1,
+body.stealth-mode h2,
+body.stealth-mode h3,
+body.stealth-mode h4,
+body.stealth-mode p,
+body.stealth-mode span {
+  color: transparent !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* Reveal on hover */
+body.stealth-mode:hover img,
+body.stealth-mode:hover .card,
+body.stealth-mode:hover [class*="poster"] {
+  filter: blur(0) grayscale(0);
+  opacity: 1;
+}
+
+body.stealth-mode:hover h1,
+body.stealth-mode:hover h2,
+body.stealth-mode:hover h3,
+body.stealth-mode:hover h4,
+body.stealth-mode:hover p,
+body.stealth-mode:hover span {
+  color: inherit !important;
+  text-shadow: none;
+}
+
+/* ============================================================ */
+/* RESPONSIVE DESIGN GLOBALS                                    */
+/* ============================================================ */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  body {
+    --hero-radius: 20px;
+    --card-radius: 16px;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  body {
+    --hero-radius: 12px;
+    --card-radius: 12px;
+  }
+  
+  body[data-font-size="large"] {
+    font-size: 16px;
+  }
+  body[data-font-size="medium"] {
+    font-size: 14px;
+  }
+  body[data-font-size="small"] {
+    font-size: 12px;
+  }
+
+  .appHeader {
+    font-size: 20px;
+    letter-spacing: 6px;
+    top: 10px;
   }
 }
