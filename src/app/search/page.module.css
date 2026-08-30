@@ -1,0 +1,1036 @@
+.pageWrapper {
+  min-height: 100vh;
+  background-color: #050B14;
+  color: white;
+}
+
+.loadingContainer, .emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  font-family: 'Space Grotesk', sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 229, 197, 0.2);
+  border-top-color: var(--primary-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.container {
+  width: 100%;
+  padding: 24px 40px 60px;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.pageTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.queryHighlight {
+  color: var(--primary-accent);
+}
+
+.filtersRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pills {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.pills::-webkit-scrollbar {
+  display: none;
+}
+
+.pill {
+  padding: 8px 20px;
+  border-radius: 24px;
+  background: #111A24;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.pill:hover {
+  background: #1A2E44;
+}
+
+.pillActive {
+  background: #00A388;
+  color: #050B14;
+}
+
+.rightFilters {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sortDropdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sortSelect {
+  background: transparent;
+  color: white;
+  border: none !important;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 16px; /* Space for a custom arrow if desired, or just to keep it clean */
+}
+
+.sortSelect option {
+  background: #0A131E;
+  color: white;
+}
+
+.advancedFiltersBtn {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 16px;
+  border-radius: 20px;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.advancedFiltersBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* TOP RESULT */
+.topResultSection {
+  margin-bottom: 48px;
+}
+
+.topResultCard {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.topResultOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #050B14 30%, rgba(5, 11, 20, 0.8) 50%, rgba(5, 11, 20, 0.2) 100%),
+              linear-gradient(to top, #050B14 0%, transparent 40%);
+  z-index: 1;
+}
+
+.topResultContent {
+  position: relative;
+  z-index: 2;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.topResultLeft {
+  display: flex;
+  gap: 32px;
+  flex: 1;
+}
+
+.topPosterWrap {
+  width: 140px;
+  height: 210px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+  background: #1A2E44;
+}
+
+.topPoster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.topPosterFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 12px;
+}
+
+.topInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.topResultLabel {
+  color: var(--primary-accent);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.topTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.topMeta {
+  display: flex;
+  align-items: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 16px;
+}
+
+.dot {
+  margin: 0 8px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.topRating {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: 600;
+}
+
+.topOverview {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 16px;
+  max-width: 600px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.genreTags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.genreTag {
+  padding: 4px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.topCredits {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.creditRow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+}
+
+.creditLabel {
+  color: rgba(255, 255, 255, 0.5);
+  display: inline-block;
+  width: 65px;
+}
+
+.creditValue {
+  color: white;
+}
+
+.topActions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.watchNowBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary-accent);
+  color: #0A1931;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.watchNowBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 229, 197, 0.3);
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 8px 16px;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.actionBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.iconBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.iconBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.topResultRight {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+}
+
+.whereToWatch {
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 24px;
+}
+
+.wtwTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.providersList {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.providerIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.providerArrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.andMore {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.andMore:hover {
+  color: white;
+}
+
+.noProviders {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.imdbBox {
+  background: #E6B91E;
+  color: black;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.mockRatingsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mockRating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mockIcon {
+  font-size: 24px;
+}
+
+.mockScore {
+  display: flex;
+  flex-direction: column;
+}
+
+.mockPct {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.mockLabel {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.2;
+}
+
+/* EXPLORE SUMMARY SECTION */
+.exploreSummarySection {
+  margin-bottom: 48px;
+}
+
+.exploreTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.exploreCards {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.exploreCards::-webkit-scrollbar {
+  display: none;
+}
+
+.exploreCard {
+  background: #0A131E;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 180px;
+  flex: 1;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.2s;
+}
+
+.exploreCard:hover {
+  background: #111A24;
+}
+
+.exploreLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.exploreIconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exploreInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.exploreLabel {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.exploreCount {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.exploreArrow {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* CAROUSELS */
+.carouselSection {
+  margin-bottom: 48px;
+}
+
+.carouselHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.carouselTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-right: 16px;
+}
+
+.viewAllLink {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  color: #00A388;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.carouselWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.carouselTrack {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scroll-behavior: smooth;
+}
+
+.carouselTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollBtn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(11, 25, 44, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+
+.scrollBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* MEDIA CARD */
+.mediaCard {
+  width: 160px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.posterWrap {
+  width: 100%;
+  height: 240px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 12px;
+  background: transparent;
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.mediaCard:hover .poster {
+  transform: scale(1.05);
+}
+
+.posterFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 12px;
+}
+
+.ratingBadge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(10, 19, 30, 0.8);
+  backdrop-filter: blur(4px);
+  padding: 4px 10px;
+  border-radius: 0 0 0 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-accent);
+}
+
+.cardTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+
+.cardYear {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* TWO COL GRID (People & Lists) */
+.twoColGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.halfCol {
+  min-width: 0;
+}
+
+.peopleGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.personCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.avatarWrap {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: #1A2E44;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatarFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.personName {
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.personRole {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.listsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.listCard {
+  position: relative;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.listBg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1A2E44, #0A1931);
+}
+
+.listOverlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.listTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.listItems {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* REVIEWS */
+.reviewsSection {
+  margin-bottom: 48px;
+}
+
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.reviewCard {
+  background: #0A131E;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.reviewAuthorWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reviewAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1A2E44;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.5);
+}
+
+.reviewAuthor {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.reviewTime {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.reviewStars {
+  display: flex;
+  gap: 2px;
+}
+
+.reviewText {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.reviewActions {
+  display: flex;
+  gap: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 12px;
+}
+
+.likeBtn, .helpfulBtn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.likeBtn:hover, .helpfulBtn:hover {
+  color: white;
+}
+
+/* EPISODES */
+.episodeCard {
+  width: 220px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.episodeImgWrap {
+  width: 100%;
+  height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background: #1A2E44;
+}
+
+.episodeBg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/cinematic_hero.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+}
+
+.episodeInfo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  display: flex;
+  flex-direction: column;
+}
+
+.episodeNumber {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  color: var(--primary-accent);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.episodeTitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.episodeTime {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.episodeCheckWrap {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: var(--primary-accent);
+  color: #050B14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .topResultContent {
+    flex-direction: column;
+  }
+  .topResultRight {
+    width: 100%;
+  }
+  .whereToWatch {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-left: 0;
+    padding-top: 24px;
+  }
+  .twoColGrid {
+    grid-template-columns: 1fr;
+  }
+  .listsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .reviewsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .filtersRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .rightFilters {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+  .topResultContent {
+    padding: 24px;
+  }
+  .topResultLeft {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+  .topTitle {
+    font-size: 24px;
+  }
+  .topMeta {
+    justify-content: center;
+  }
+  .genreTags {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .topActions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .reviewsGrid {
+    grid-template-columns: 1fr;
+  }
+  .peopleGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .pills {
+    width: 100%;
+  }
+}
